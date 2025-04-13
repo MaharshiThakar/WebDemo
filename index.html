@@ -1,0 +1,58 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hardware Parts</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    canvas { width: 100%; height: 100% }
+  </style>
+</head>
+<body class="bg-gray-100 text-gray-800">
+  <header class="bg-white shadow p-4 text-center text-2xl font-bold">Hardware Parts</header>
+  <main class="p-4 grid grid-cols-1 md:grid-cols-2 gap-4">
+    <section>
+      <h2 class="text-xl font-semibold mb-2">3D Part Preview</h2>
+      <div class="w-full h-96 bg-white rounded-lg shadow" id="viewer"></div>
+    </section>
+    <section>
+      <h2 class="text-xl font-semibold mb-2">Parts Catalog</h2>
+      <ul class="bg-white p-4 rounded-lg shadow space-y-2">
+        <li>🔩 Bolt</li>
+        <li>⚙️ Gear</li>
+        <li>🧱 Frame</li>
+        <li>🪛 Screwdriver</li>
+      </ul>
+    </section>
+  </main>
+  <footer class="text-center text-sm p-4 text-gray-500">© 2025 Hardware Parts Inc.</footer>
+  <script type="module">
+    import * as THREE from 'https://cdn.skypack.dev/three@0.150.1';
+
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(75, 1, 0.1, 1000);
+    const renderer = new THREE.WebGLRenderer();
+    const container = document.getElementById('viewer');
+    renderer.setSize(container.clientWidth, container.clientHeight);
+    container.appendChild(renderer.domElement);
+
+    const geometry = new THREE.BoxGeometry();
+    const material = new THREE.MeshNormalMaterial();
+    const cube = new THREE.Mesh(geometry, material);
+    scene.add(cube);
+
+    camera.position.z = 2;
+
+    function animate() {
+      requestAnimationFrame(animate);
+      cube.rotation.x += 0.01;
+      cube.rotation.y += 0.01;
+      renderer.render(scene, camera);
+    }
+
+    animate();
+  </script>
+</body>
+</html>
