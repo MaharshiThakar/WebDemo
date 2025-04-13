@@ -58,7 +58,7 @@
         document.getElementById('viewer').appendChild(renderer.domElement);
 
         const loader = new GLTFLoader();
-        loader.load('./guitar_hardware_parts.glb', function (gltf) {
+        loader.load('https://maharshithakar.github.io/WebDemo/guitar_hardware_parts.glb', function (gltf) {
             scene.add(gltf.scene);
             gltf.scene.rotation.y = Math.PI;
         }, undefined, function (error) {
