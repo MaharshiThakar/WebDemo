@@ -2,112 +2,76 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hardware Parts</title>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet" />
-  <script type="module">
-    import * as THREE from 'https://cdn.skypack.dev/three@0.150.1';
-    import { GLTFLoader } from 'https://cdn.skypack.dev/three@0.150.1/examples/jsm/loaders/GLTFLoader.js';
-
-    window.addEventListener('DOMContentLoaded', () => {
-      const scene = new THREE.Scene();
-      const camera = new THREE.PerspectiveCamera(75, window.innerWidth / 600, 0.1, 1000);
-      const renderer = new THREE.WebGLRenderer({ alpha: true });
-      renderer.setSize(window.innerWidth, 400);
-      document.getElementById('viewer-container').appendChild(renderer.domElement);
-
-      const light = new THREE.HemisphereLight(0xffffff, 0x444444, 1);
-      light.position.set(0, 20, 0);
-      scene.add(light);
-
-      const loader = new GLTFLoader();
-      loader.load('./models/guitar_hardware_parts.glb', function (gltf) {
-        const model = gltf.scene;
-        scene.add(model);
-        model.scale.set(10, 10, 10);
-        model.rotation.y = Math.PI;
-        animate();
-      });
-
-      camera.position.z = 5;
-
-      function animate() {
-        requestAnimationFrame(animate);
-        scene.rotation.y += 0.003;
-        renderer.render(scene, camera);
-      }
-    });
-  </script>
-  <style>
-    html {
-      scroll-behavior: smooth;
-    }
-  </style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Hardware Parts</title>
+    <style>
+        body { margin: 0; font-family: Arial, sans-serif; background: #f5f6fa; }
+        header { background: linear-gradient(to right, #1e3c72, #2a5298); color: white; padding: 1rem; text-align: center; font-size: 1.5rem; font-weight: bold; }
+        .hero { background: #555; color: white; padding: 4rem 2rem; text-align: center; font-size: 1.25rem; }
+        .section-title { text-align: center; font-size: 1.5rem; margin: 2rem 0 1rem; }
+        .cards { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; padding: 0 2rem; }
+        .card { background: white; box-shadow: 0 2px 5px rgba(0,0,0,0.1); border-radius: 5px; padding: 1rem; width: 250px; }
+        .card img { width: 100%; border-radius: 5px; }
+        #viewer { width: 100%; height: 500px; background: #dfe6e9; margin-top: 1rem; }
+    </style>
 </head>
-<body class="bg-white text-gray-900 font-sans">
-  <header class="bg-gradient-to-r from-blue-900 to-blue-700 text-white sticky top-0 z-50 shadow">
-    <div class="max-w-7xl mx-auto px-4 py-6 flex items-center justify-between">
-      <h1 class="text-2xl font-bold uppercase tracking-wide">Hardware Parts</h1>
-      <nav>
-        <ul class="flex space-x-6 text-sm">
-          <li><a href="#home" class="hover:underline">Home</a></li>
-          <li><a href="#catalog" class="hover:underline">Catalog</a></li>
-          <li><a href="#viewer" class="hover:underline">3D Viewer</a></li>
-        </ul>
-      </nav>
+<body>
+    <header>HARDWARE PARTS</header>
+    <div class="hero">
+        <h2>Advanced Hardware Components</h2>
+        <p>Precision. Strength. Innovation.</p>
     </div>
-  </header>
-
-  <section id="home" class="relative bg-cover bg-center h-96 animate__animated animate__fadeIn"
-    style="background-image: url('https://www.astralpipes.com/images/banner1.jpg');">
-    <div class="absolute inset-0 bg-black bg-opacity-60 flex items-center justify-center">
-      <div class="text-center text-white">
-        <h2 class="text-4xl font-bold mb-2">Advanced Hardware Components</h2>
-        <p class="text-lg">Precision. Strength. Innovation.</p>
-      </div>
-    </div>
-  </section>
-
-  <section id="catalog" class="py-16 px-6 bg-gray-100 animate__animated animate__fadeInUp">
-    <div class="max-w-7xl mx-auto">
-      <h3 class="text-3xl font-semibold text-center mb-12">Our Hardware Range</h3>
-      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-        <div class="bg-white rounded shadow-lg transform hover:scale-105 transition overflow-hidden">
-          <img src="https://via.placeholder.com/400x200?text=Gear+Model" class="w-full" alt="Part">
-          <div class="p-4">
-            <h4 class="font-bold text-lg mb-1">High Precision Gear</h4>
-            <p class="text-sm text-gray-600">Durable gear made for high-speed mechanical performance.</p>
-          </div>
+    <section>
+        <h3 class="section-title">Our Hardware Range</h3>
+        <div class="cards">
+            <div class="card">
+                <img src="https://via.placeholder.com/250x150?text=Part" alt="Part">
+                <h4>High Precision Gear</h4>
+                <p>Durable gear made for high-speed mechanical performance.</p>
+            </div>
+            <div class="card">
+                <img src="https://via.placeholder.com/250x150?text=Part" alt="Part">
+                <h4>Titanium Screw</h4>
+                <p>Rust-resistant and ideal for structural applications.</p>
+            </div>
+            <div class="card">
+                <img src="https://via.placeholder.com/250x150?text=Part" alt="Part">
+                <h4>Pipe Joint</h4>
+                <p>Seamless connector designed for fluid-tight performance.</p>
+            </div>
         </div>
-        <div class="bg-white rounded shadow-lg transform hover:scale-105 transition overflow-hidden">
-          <img src="https://via.placeholder.com/400x200?text=Screw" class="w-full" alt="Part">
-          <div class="p-4">
-            <h4 class="font-bold text-lg mb-1">Titanium Screw</h4>
-            <p class="text-sm text-gray-600">Rust-resistant and ideal for structural applications.</p>
-          </div>
-        </div>
-        <div class="bg-white rounded shadow-lg transform hover:scale-105 transition overflow-hidden">
-          <img src="https://via.placeholder.com/400x200?text=Pipe+Joint" class="w-full" alt="Part">
-          <div class="p-4">
-            <h4 class="font-bold text-lg mb-1">Pipe Joint</h4>
-            <p class="text-sm text-gray-600">Seamless connector designed for fluid-tight performance.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+    </section>
+    <section>
+        <h3 class="section-title">Interactive 3D Viewer</h3>
+        <div id="viewer"></div>
+    </section>
 
-  <section id="viewer" class="py-16 px-6 bg-white animate__animated animate__fadeInUp">
-    <div class="max-w-7xl mx-auto text-center">
-      <h3 class="text-3xl font-semibold mb-6">Interactive 3D Viewer</h3>
-      <div id="viewer-container" class="w-full h-96 bg-gradient-to-tr from-gray-200 to-gray-300 rounded shadow-lg border-4 border-white"></div>
-    </div>
-  </section>
+    <script type="module">
+        import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.160.1/build/three.module.js';
+        import { GLTFLoader } from 'https://cdn.jsdelivr.net/npm/three@0.160.1/examples/jsm/loaders/GLTFLoader.js';
 
-  <footer class="bg-blue-900 text-white text-center p-6 mt-10">
-    &copy; 2025 Hardware Parts. All rights reserved.
-  </footer>
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / 500, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({ antialias: true });
+        renderer.setSize(window.innerWidth, 500);
+        document.getElementById('viewer').appendChild(renderer.domElement);
+
+        const loader = new GLTFLoader();
+        loader.load('guitar_hardware_parts.glb', function (gltf) {
+            scene.add(gltf.scene);
+            gltf.scene.rotation.y = Math.PI;
+        }, undefined, function (error) {
+            console.error('Error loading model:', error);
+        });
+
+        camera.position.z = 2;
+
+        function animate() {
+            requestAnimationFrame(animate);
+            renderer.render(scene, camera);
+        }
+        animate();
+    </script>
 </body>
 </html>
