@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Hardware Parts</title>
     <style>
@@ -58,12 +58,16 @@
         document.getElementById('viewer').appendChild(renderer.domElement);
 
         const loader = new GLTFLoader();
-        loader.load('https://maharshithakar.github.io/WebDemo/guitar_hardware_parts.glb', function (gltf) {
-            scene.add(gltf.scene);
-            gltf.scene.rotation.y = Math.PI;
-        }, undefined, function (error) {
-            console.error('Error loading model:', error);
-        });
+        loader.load('./test_model.glb',
+            function (gltf) {
+                console.log("✅ Model loaded");
+                scene.add(gltf.scene);
+            },
+            undefined,
+            function (error) {
+                console.error("❌ Error loading model:", error);
+            }
+        );
 
         camera.position.z = 2;
 
