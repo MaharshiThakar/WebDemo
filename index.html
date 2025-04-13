@@ -58,7 +58,7 @@
         document.getElementById('viewer').appendChild(renderer.domElement);
 
         const loader = new GLTFLoader();
-        loader.load('./guitar_hardware_parts.glb',
+        loader.load('./test_model.glb',
             function (gltf) {
                 console.log("✅ Model loaded");
                 scene.add(gltf.scene);
