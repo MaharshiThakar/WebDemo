@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Hardware Parts</title>
     <style>
@@ -58,7 +58,7 @@
         document.getElementById('viewer').appendChild(renderer.domElement);
 
         const loader = new GLTFLoader();
-        loader.load('./test_model.glb',
+        loader.load('./guitar_hardware_parts.glb',
             function (gltf) {
                 console.log("✅ Model loaded");
                 scene.add(gltf.scene);
