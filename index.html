@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -45,9 +46,6 @@
       margin: 0;
       padding: 0;
     }
-    nav ul li {
-      display: inline;
-    }
     nav ul li a {
       text-decoration: none;
       color: #0a213d;
@@ -72,11 +70,17 @@
       color: #fff;
       padding: 60px 20px;
       text-align: center;
-      opacity: 0;
-      transform: translateY(30px);
-      animation: fadeInUp 1s ease-out forwards;
     }
-    @keyframes fadeInUp {
+    .hero h2, .hero p, .hero a {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: slideUpFade 0.8s forwards;
+    }
+    .hero h2 { animation-delay: 0.2s; }
+    .hero p { animation-delay: 0.4s; }
+    .hero a { animation-delay: 0.6s; }
+
+    @keyframes slideUpFade {
       to {
         opacity: 1;
         transform: translateY(0);
@@ -93,212 +97,86 @@
       display: inline-block;
       margin-top: 20px;
       padding: 10px 20px;
-      background-color: #007bff;
-      color: white;
-      text-decoration: none;
-      border-radius: 4px;
-      transition: background-color 0.3s;
-    }
-    .hero a:hover {
-      background-color: #0056b3;
-    }
-    section {
-      max-width: 1200px;
-      margin: auto;
-      padding: 20px;
-    }
-    .section-title {
-      font-size: 28px;
-      color: #0a213d;
-      margin-bottom: 20px;
-    }
-    .intro {
-      display: flex;
-      gap: 20px;
-      align-items: center;
-      margin-bottom: 40px;
-    }
-    .intro img {
-      width: 50%;
-      border-radius: 8px;
-    }
-    .intro p {
-      flex: 1;
-    }
-    .cards {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 15px;
-    }
-    .card {
-      border: 2px solid #0a213d;
-      border-radius: 6px;
-      width: calc(33.333% - 10px);
-      text-align: center;
-      padding: 10px;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-    .card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-    }
-    .card img {
-      width: 100%;
-      height: 120px;
-      background-color: #ccc;
-      border-radius: 4px;
-      margin-bottom: 10px;
-    }
-    .card h4 {
-      color: #0a213d;
-      margin: 0;
-    }
-    .mission {
-      background-color: #0a213d;
-      color: #fff;
-      text-align: center;
-      padding: 30px;
-      margin-top: 40px;
-    }
-    .focus, .industries, .contact {
-      text-align: center;
-      padding: 40px 20px;
-    }
-    .focus-icons, .industry-tiles {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 20px;
-      margin-top: 20px;
-    }
-    .focus-icons div, .industry-tiles div {
-      width: 200px;
-      padding: 10px;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-      background: #f9f9f9;
-      transition: transform 0.3s;
-    }
-    .focus-icons div:hover, .industry-tiles div:hover {
-      transform: scale(1.05);
-    }
-    .focus-icons img, .industry-tiles img {
-      width: 100%;
-      border-radius: 6px;
-    }
-    .contact-form {
-      display: flex;
-      justify-content: space-around;
-      flex-wrap: wrap;
-      margin-top: 20px;
-    }
-    .contact-form div, form {
-      flex: 1 1 300px;
-      margin: 10px;
-    }
-    input, textarea {
-      width: 100%;
-      padding: 10px;
-      margin: 8px 0;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-    }
-    button {
-      background: #0a213d;
-      color: white;
-      border: none;
-      padding: 10px 20px;
-      border-radius: 4px;
-      cursor: pointer;
-    }
-  </style>
-</head>
-<body>
+</script>
 
-<header>NEXUS GLOBAL TRADE</header>
-<nav>
-  <div class="logo">Nexus</div>
-  <ul>
-    <li><a href="#">Home</a></li>
-    <li><a href="#">About Us</a></li>
-    <li><a href="#">Products</a></li>
-    <li><a href="#">Industries</a></li>
-    <li><a href="#">Contact</a></li>
-  </ul>
-</nav>
-
-<div class="hero">
-  <h2>WELCOME TO NEXUS GLOBAL TRADE</h2>
-  <p>Manufacturer & Exporter of High-Quality Brass Product</p>
-  <a href="#">Explore Products</a>
-</div>
-
-<section>
-  <div class="intro">
-    <p>
-      WE AT NEXUS GLOBAL TRADE INTRODUCE AS LEADING MANUFACTURER OF BRASS COMPONENTS
-      Nexus Global Trade offers premium quality products for diverse industries and global markets. Our products meet international standards ensuring reliability and durability.
+<section class="fade-in-section">
+  <h3 class="section-title">ABOUT US</h3>
+  <div style="display: flex; gap: 20px; align-items: center;">
+    <p style="flex: 1;">
+      We at Nexus Global Trade introduce ourselves as a leading manufacturer of brass components.
+      Our premium products cater to global industries, ensuring international quality, durability, and innovation.
     </p>
-    <img src="https://via.placeholder.com/500x300" alt="">
+    <img src="https://via.placeholder.com/400x250" alt="About Us" style="width: 50%; border-radius: 8px;">
   </div>
+</section>
 
+<section class="fade-in-section">
   <h3 class="section-title">OUR PRODUCTS RANGE</h3>
-  <div class="cards">
+  <div style="display: flex; flex-wrap: wrap; gap: 15px;">
     <div class="card"><img src="https://via.placeholder.com/250x150"><h4>Electrical Components</h4></div>
-    <div class="card"><img src="https://via.placeholder.com/250x150"><h4>Precision Turned Components</h4></div>
-    <div class="card"><img src="https://via.placeholder.com/250x150"><h4>Customized Brass Components</h4></div>
-    <div class="card"><img src="https://via.placeholder.com/250x150"><h4>Automobile Components</h4></div>
-    <div class="card"><img src="https://via.placeholder.com/250x150"><h4>Brass Insert</h4></div>
-    <div class="card"><img src="https://via.placeholder.com/250x150"><h4>Brass Forged Components</h4></div>
-    <div class="card"><img src="https://via.placeholder.com/250x150"><h4>Fittings Components</h4></div>
-    <div class="card"><img src="https://via.placeholder.com/250x150"><h4>Gas Fittings</h4></div>
-    <div class="card"><img src="https://via.placeholder.com/250x150"><h4>Bushing Components</h4></div>
+    <div class="card"><img src="https://via.placeholder.com/250x150"><h4>Brass Inserts</h4></div>
+    <div class="card"><img src="https://via.placeholder.com/250x150"><h4>Precision Turned Parts</h4></div>
+    <div class="card"><img src="https://via.placeholder.com/250x150"><h4>Brass Forged Parts</h4></div>
+    <div class="card"><img src="https://via.placeholder.com/250x150"><h4>Auto Components</h4></div>
+    <div class="card"><img src="https://via.placeholder.com/250x150"><h4>Customized Items</h4></div>
   </div>
 </section>
 
-<div class="mission">
-  <h3>Mission & Vision</h3>
-  <p>Nexus Global Trade Envisions Becoming A Global Leader in The Brass Components Industry, Recognized For Unmatched Quality And Reliability.</p>
-</div>
+<section class="fade-in-section" style="background-color: #0a213d; color: white; text-align: center; padding: 40px;">
+  <h3 class="section-title" style="color: white;">MISSION & VISION</h3>
+  <p style="max-width: 700px; margin: auto;">Nexus Global Trade envisions becoming a global leader in the brass components industry, recognized for unmatched quality and reliability.</p>
+</section>
 
-<section class="focus">
+<section class="fade-in-section">
   <h3 class="section-title">OUR FOCUS</h3>
-  <div class="focus-icons">
-    <div><img src="https://via.placeholder.com/150"><p>Stringent Quality Measures</p></div>
-    <div><img src="https://via.placeholder.com/150"><p>Competitive Price</p></div>
-    <div><img src="https://via.placeholder.com/150"><p>Product Customization</p></div>
-    <div><img src="https://via.placeholder.com/150"><p>On Time Delivery</p></div>
-  </div>
-</section>
-
-<section class="industries">
-  <h3 class="section-title">INDUSTRIES WE SERVE</h3>
-  <div class="industry-tiles">
-    <div><img src="https://via.placeholder.com/200x120"><p>Building & Construction</p></div>
-    <div><img src="https://via.placeholder.com/200x120"><p>Agriculture & Farming</p></div>
-    <div><img src="https://via.placeholder.com/200x120"><p>Appliance Industries</p></div>
-    <div><img src="https://via.placeholder.com/200x120"><p>Automotive</p></div>
-    <div><img src="https://via.placeholder.com/200x120"><p>Electrical</p></div>
-    <div><img src="https://via.placeholder.com/200x120"><p>Energy</p></div>
-    <div><img src="https://via.placeholder.com/200x120"><p>Oil & Gas</p></div>
-    <div><img src="https://via.placeholder.com/200x120"><p>Telecommunication</p></div>
-  </div>
-</section>
-
-<section class="contact">
-  <h3 class="section-title">CONNECT WITH US</h3>
-  <div class="contact-form">
-    <div>
-      <p><strong>Get In Touch</strong></p>
-      <p>123 Industrial Estate, Ahmedabad, India<br>Phone: +91 9999999999<br>Email: contact@nexusglobal.com</p>
+  <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px;">
+    <div style="width: 200px; text-align: center;">
+      <img src="https://via.placeholder.com/150"><p>Stringent Quality</p>
     </div>
-    <form>
+    <div style="width: 200px; text-align: center;">
+      <img src="https://via.placeholder.com/150"><p>Product Customization</p>
+    </div>
+    <div style="width: 200px; text-align: center;">
+      <img src="https://via.placeholder.com/150"><p>Timely Delivery</p>
+    </div>
+    <div style="width: 200px; text-align: center;">
+      <img src="https://via.placeholder.com/150"><p>Affordable Pricing</p>
+    </div>
+  </div>
+</section>
+
+<section class="fade-in-section">
+  <h3 class="section-title">INDUSTRIES WE SERVE</h3>
+  <div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center;">
+    <div style="width: 200px;"><img src="https://via.placeholder.com/200x120"><p>Automotive</p></div>
+    <div style="width: 200px;"><img src="https://via.placeholder.com/200x120"><p>Energy</p></div>
+    <div style="width: 200px;"><img src="https://via.placeholder.com/200x120"><p>Construction</p></div>
+    <div style="width: 200px;"><img src="https://via.placeholder.com/200x120"><p>Telecom</p></div>
+    <div style="width: 200px;"><img src="https://via.placeholder.com/200x120"><p>Agriculture</p></div>
+  </div>
+</section>
+
+<section class="fade-in-section">
+  <h3 class="section-title">CONTACT US</h3>
+  <div style="display: flex; flex-wrap: wrap; gap: 30px;">
+    <div style="flex: 1;">
+      <h4>Reach Us</h4>
+      <p>123 Industrial Estate, Ahmedabad, India</p>
+      <p>Phone: +91 9999999999</p>
+      <p>Email: info@nexusglobal.com</p>
+    </div>
+    <form style="flex: 1;">
       <input type="text" placeholder="Your Name" required>
       <input type="email" placeholder="Your Email" required>
       <textarea rows="4" placeholder="Your Message" required></textarea>
       <button type="submit">Send Message</button>
     </form>
   </div>
+</section>
+
+<footer style="text-align: center; background: #0a213d; color: white; padding: 15px;">
+  &copy; 2025 Nexus Global Trade. All rights reserved.
+</footer>
 
     </section>
     <section>
