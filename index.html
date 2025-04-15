@@ -6,6 +6,9 @@
   <title>Nexus Global Trade</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
   <style>
+    html {
+      scroll-behavior: smooth;
+    }
     body {
       font-family: 'Roboto', sans-serif;
       margin: 0;
@@ -20,12 +23,15 @@
       font-size: 24px;
     }
     nav {
+      position: sticky;
+      top: 0;
       background-color: #ffffff;
       border-bottom: 1px solid #ccc;
       padding: 10px 20px;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      z-index: 999;
     }
     nav .logo {
       font-weight: bold;
@@ -46,12 +52,35 @@
       text-decoration: none;
       color: #0a213d;
       font-weight: 500;
+      position: relative;
+    }
+    nav ul li a::after {
+      content: "";
+      position: absolute;
+      width: 0;
+      height: 2px;
+      background-color: #007bff;
+      left: 0;
+      bottom: -3px;
+      transition: width 0.3s;
+    }
+    nav ul li a:hover::after {
+      width: 100%;
     }
     .hero {
       background-color: #1b1f23;
       color: #fff;
       padding: 60px 20px;
       text-align: center;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeInUp 1s ease-out forwards;
+    }
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
     .hero h2 {
       font-size: 36px;
@@ -68,6 +97,10 @@
       color: white;
       text-decoration: none;
       border-radius: 4px;
+      transition: background-color 0.3s;
+    }
+    .hero a:hover {
+      background-color: #0056b3;
     }
     section {
       max-width: 1200px;
@@ -103,6 +136,11 @@
       width: calc(33.333% - 10px);
       text-align: center;
       padding: 10px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
     }
     .card img {
       width: 100%;
@@ -139,6 +177,10 @@
       border: 1px solid #ccc;
       border-radius: 8px;
       background: #f9f9f9;
+      transition: transform 0.3s;
+    }
+    .focus-icons div:hover, .industry-tiles div:hover {
+      transform: scale(1.05);
     }
     .focus-icons img, .industry-tiles img {
       width: 100%;
