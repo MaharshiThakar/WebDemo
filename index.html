@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
+<head>
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Nexus Global Trade</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
@@ -81,10 +81,58 @@
       padding: 30px;
       margin-top: 40px;
     }
+    .focus, .industries, .contact {
+      text-align: center;
+      padding: 40px 20px;
+    }
+    .focus-icons, .industry-tiles {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin-top: 20px;
+    }
+    .focus-icons div, .industry-tiles div {
+      width: 200px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      background: #f9f9f9;
+    }
+    .focus-icons img, .industry-tiles img {
+      width: 100%;
+      border-radius: 6px;
+    }
+    .contact-form {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      margin-top: 20px;
+    }
+    .contact-form div, form {
+      flex: 1 1 300px;
+      margin: 10px;
+    }
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    button {
+      background: #0a213d;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
   </style>
-  </head>
-  <body>
-    <header>NEXUS GLOBAL TRADE</header>
+</head>
+<body>
+
+<header>NEXUS GLOBAL TRADE</header>
 
 <div class="hero">
   <h2>WELCOME TO NEXUS GLOBAL TRADE</h2>
@@ -118,6 +166,45 @@
   <h3>Mission & Vision</h3>
   <p>Nexus Global Trade Envisions Becoming A Global Leader in The Brass Components Industry, Recognized For Unmatched Quality And Reliability.</p>
 </div>
+
+<section class="focus">
+  <h3 class="section-title">OUR FOCUS</h3>
+  <div class="focus-icons">
+    <div><img src="https://via.placeholder.com/150"><p>Stringent Quality Measures</p></div>
+    <div><img src="https://via.placeholder.com/150"><p>Competitive Price</p></div>
+    <div><img src="https://via.placeholder.com/150"><p>Product Customization</p></div>
+    <div><img src="https://via.placeholder.com/150"><p>On Time Delivery</p></div>
+  </div>
+</section>
+
+<section class="industries">
+  <h3 class="section-title">INDUSTRIES WE SERVE</h3>
+  <div class="industry-tiles">
+    <div><img src="https://via.placeholder.com/200x120"><p>Building & Construction</p></div>
+    <div><img src="https://via.placeholder.com/200x120"><p>Agriculture & Farming</p></div>
+    <div><img src="https://via.placeholder.com/200x120"><p>Appliance Industries</p></div>
+    <div><img src="https://via.placeholder.com/200x120"><p>Automotive</p></div>
+    <div><img src="https://via.placeholder.com/200x120"><p>Electrical</p></div>
+    <div><img src="https://via.placeholder.com/200x120"><p>Energy</p></div>
+    <div><img src="https://via.placeholder.com/200x120"><p>Oil & Gas</p></div>
+    <div><img src="https://via.placeholder.com/200x120"><p>Telecommunication</p></div>
+  </div>
+</section>
+
+<section class="contact">
+  <h3 class="section-title">CONNECT WITH US</h3>
+  <div class="contact-form">
+    <div>
+      <p><strong>Get In Touch</strong></p>
+      <p>123 Industrial Estate, Ahmedabad, India<br>Phone: +91 9999999999<br>Email: contact@nexusglobal.com</p>
+    </div>
+    <form>
+      <input type="text" placeholder="Your Name" required>
+      <input type="email" placeholder="Your Email" required>
+      <textarea rows="4" placeholder="Your Message" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+  </div>
 
     </section>
     <section>
