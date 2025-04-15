@@ -1,142 +1,159 @@
 <!DOCTYPE html>
 <html lang="en">
-    <script type="module">
-      import * as THREE from "https://cdn.jsdelivr.net/npm/three@0.160.1/build/three.module.js";
-      import { GLTFLoader } from "https://cdn.jsdelivr.net/npm/three@0.160.1/examples/jsm/loaders/GLTFLoader.js";
-      import { OrbitControls } from "https://cdn.jsdelivr.net/npm/three@0.160.1/examples/jsm/controls/OrbitControls.js";
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>3D Viewer</title>
+  <style>
+    body, html {
+      margin: 0;
+      overflow: hidden;
+    }
+    #viewer {
+      width: 100%;
+      height: 100vh;
+    }
+  </style>
+</head>
+<body>
+  <div id="viewer"></div>
+  <script type="module">
+  import * as THREE from "https://cdn.jsdelivr.net/npm/three@0.160.1/build/three.module.js";
+  import { GLTFLoader } from "https://cdn.jsdelivr.net/npm/three@0.160.1/examples/jsm/loaders/GLTFLoader.js";
+  import { OrbitControls } from "https://cdn.jsdelivr.net/npm/three@0.160.1/examples/jsm/controls/OrbitControls.js";
 
-      // Set up scene
-      const scene = new THREE.Scene();
-      scene.background = new THREE.Color(0xf0f0f0);
+  // Set up scene
+  const scene = new THREE.Scene();
+  scene.background = new THREE.Color(0xf0f0f0);
 
-      // Add lighting
-      const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
-      scene.add(ambientLight);
+  // Add lighting
+  const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
+  scene.add(ambientLight);
 
-      const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
-      directionalLight.position.set(5, 5, 5);
-      scene.add(directionalLight);
+  const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
+  directionalLight.position.set(5, 5, 5);
+  scene.add(directionalLight);
 
-      // Set up camera
-      const container = document.getElementById("viewer");
-      const camera = new THREE.PerspectiveCamera(
-        75,
-        container.clientWidth / container.clientHeight,
-        0.1,
-        1000
-      );
-      camera.position.z = 2;
+  // Set up camera
+  const container = document.getElementById("viewer");
+  const camera = new THREE.PerspectiveCamera(
+    75,
+    container.clientWidth / container.clientHeight,
+    0.1,
+    1000
+  );
+  camera.position.z = 2;
 
-      // Set up renderer
-      const renderer = new THREE.WebGLRenderer({ antialias: true });
-      renderer.setSize(container.clientWidth, container.clientHeight);
-      container.appendChild(renderer.domElement);
+  // Set up renderer
+  const renderer = new THREE.WebGLRenderer({ antialias: true });
+  renderer.setSize(container.clientWidth, container.clientHeight);
+  container.appendChild(renderer.domElement);
 
-      // Add orbit controls
-      const controls = new OrbitControls(camera, renderer.domElement);
-      controls.enableDamping = true;
-      controls.dampingFactor = 0.05;
+  // Add orbit controls
+  const controls = new OrbitControls(camera, renderer.domElement);
+  controls.enableDamping = true;
+  controls.dampingFactor = 0.05;
 
-      // Handle window resize
-      window.addEventListener("resize", () => {
-        camera.aspect = container.clientWidth / container.clientHeight;
-        camera.updateProjectionMatrix();
-        renderer.setSize(container.clientWidth, container.clientHeight);
-      });
+  // Handle window resize
+  window.addEventListener("resize", () => {
+    camera.aspect = container.clientWidth / container.clientHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(container.clientWidth, container.clientHeight);
+  });
 
-      // Add a fallback object if model fails to load
-      const addFallbackObject = () => {
-        // Create a gear-like geometry
-        const gear = new THREE.Group();
+  // Add a fallback object if model fails to load
+  const addFallbackObject = () => {
+    // Create a gear-like geometry
+    const gear = new THREE.Group();
 
-        // Main cylinder
-        const cylinderGeometry = new THREE.CylinderGeometry(0.5, 0.5, 0.2, 32);
-        const cylinderMaterial = new THREE.MeshPhongMaterial({
-          color: 0x888888,
-        });
-        const cylinder = new THREE.Mesh(cylinderGeometry, cylinderMaterial);
-        gear.add(cylinder);
+    // Main cylinder
+    const cylinderGeometry = new THREE.CylinderGeometry(0.5, 0.5, 0.2, 32);
+    const cylinderMaterial = new THREE.MeshPhongMaterial({
+      color: 0x888888,
+    });
+    const cylinder = new THREE.Mesh(cylinderGeometry, cylinderMaterial);
+    gear.add(cylinder);
 
-        // Teeth
-        const toothGeometry = new THREE.BoxGeometry(0.1, 0.1, 0.3);
-        const toothMaterial = new THREE.MeshPhongMaterial({ color: 0x666666 });
+    // Teeth
+    const toothGeometry = new THREE.BoxGeometry(0.1, 0.1, 0.3);
+    const toothMaterial = new THREE.MeshPhongMaterial({ color: 0x666666 });
 
-        for (let i = 0; i < 12; i++) {
-          const tooth = new THREE.Mesh(toothGeometry, toothMaterial);
-          const angle = (i / 12) * Math.PI * 2;
-          tooth.position.x = Math.cos(angle) * 0.6;
-          tooth.position.z = Math.sin(angle) * 0.6;
-          tooth.rotation.y = angle;
-          gear.add(tooth);
-        }
+    for (let i = 0; i < 12; i++) {
+      const tooth = new THREE.Mesh(toothGeometry, toothMaterial);
+      const angle = (i / 12) * Math.PI * 2;
+      tooth.position.x = Math.cos(angle) * 0.6;
+      tooth.position.z = Math.sin(angle) * 0.6;
+      tooth.rotation.y = angle;
+      gear.add(tooth);
+    }
 
-        // Inner hole
-        const holeGeometry = new THREE.CylinderGeometry(0.15, 0.15, 0.3, 16);
-        const holeMaterial = new THREE.MeshPhongMaterial({ color: 0x444444 });
-        const hole = new THREE.Mesh(holeGeometry, holeMaterial);
-        gear.add(hole);
+    // Inner hole
+    const holeGeometry = new THREE.CylinderGeometry(0.15, 0.15, 0.3, 16);
+    const holeMaterial = new THREE.MeshPhongMaterial({ color: 0x444444 });
+    const hole = new THREE.Mesh(holeGeometry, holeMaterial);
+    gear.add(hole);
 
-        scene.add(gear);
+    scene.add(gear);
 
-        // Add rotation animation
-        return gear;
-      };
+    // Add rotation animation
+    return gear;
+  };
 
-      // Load 3D model
-      const loader = new GLTFLoader();
-      let model;
+  // Load 3D model
+  const loader = new GLTFLoader();
+  let model;
 
-      try {
-        loader.load(
-          "./guitar_hardware_parts.glb",
-          function (gltf) {
-            console.log("✅ Model loaded");
-            model = gltf.scene;
-            scene.add(model);
+  try {
+    loader.load(
+      "./guitar_hardware_parts.glb",
+      function (gltf) {
+        console.log("✅ Model loaded");
+        model = gltf.scene;
+        scene.add(model);
 
-            // Center and scale the model
-            const box = new THREE.Box3().setFromObject(model);
-            const center = box.getCenter(new THREE.Vector3());
-            const size = box.getSize(new THREE.Vector3());
+        // Center and scale the model
+        const box = new THREE.Box3().setFromObject(model);
+        const center = box.getCenter(new THREE.Vector3());
+        const size = box.getSize(new THREE.Vector3());
 
-            const maxDim = Math.max(size.x, size.y, size.z);
-            const scale = 1.5 / maxDim;
-            model.scale.set(scale, scale, scale);
+        const maxDim = Math.max(size.x, size.y, size.z);
+        const scale = 1.5 / maxDim;
+        model.scale.set(scale, scale, scale);
 
-            model.position.sub(center.multiplyScalar(scale));
-          },
-          undefined,
-          function (error) {
-            console.error("❌ Error loading model:", error);
-            model = addFallbackObject();
-          }
-        );
-      } catch (error) {
-        console.error("❌ Error setting up model loader:", error);
+        model.position.sub(center.multiplyScalar(scale));
+      },
+      undefined,
+      function (error) {
+        console.error("❌ Error loading model:", error);
         model = addFallbackObject();
       }
+    );
+  } catch (error) {
+    console.error("❌ Error setting up model loader:", error);
+    model = addFallbackObject();
+  }
 
-      // Animation loop
-      function animate() {
-        requestAnimationFrame(animate);
-        controls.update();
+  // Animation loop
+  function animate() {
+    requestAnimationFrame(animate);
+    controls.update();
 
-        if (model && !controls.enabled) {
-          model.rotation.y += 0.01;
-        }
+    if (model && !controls.enabled) {
+      model.rotation.y += 0.01;
+    }
 
-        renderer.render(scene, camera);
-      }
+    renderer.render(scene, camera);
+  }
 
-      animate();
-    </script>
+  animate();
+</script>
 
-    <script type="importmap">
-      {
-        "imports": {
-          "three": "https://unpkg.com/three/build/three.module.js"
-        }
-      }
-    </script>
-  </body>
+<script type="importmap">
+  {
+    "imports": {
+      "three": "https://unpkg.com/three/build/three.module.js"
+    }
+  }
+</script>
+</body>
 </html>
